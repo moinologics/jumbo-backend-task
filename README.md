@@ -7,6 +7,16 @@ PreRequisite
 * docker
 * docker-compose
 
+#### Youtube API key generation
+- create a project on google cloud
+- enable apis and service
+- [search for youtube] -> select 'youtube data api v3'
+- click on enable api
+- click on credentials
+- [1st time flow]: select Credential Type as public, you will get api key in 'Your Credentials' step
+- [2nd/onward time flow]: click on create credentials button -> select api key, you will get api key from pop up
+
+
 clone repo
 
 ```

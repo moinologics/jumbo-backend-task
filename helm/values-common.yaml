@@ -1,0 +1,13 @@
+plainEnvs:
+  - name: NODE_ENV
+    value: production
+  - name: PORT
+    value: "80"
+  - name: DATABASE_URL
+    value: postgres://postgres:secret@localhost:5432/jumbo
+  - name: DATABASE_SCHEMA
+    value: public
+  - name: JWT_SECRET
+    value: some-very-strong-secret
+  - name: YOUTUBE_API_KEY
+    value: youtube-api-key

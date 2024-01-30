@@ -1,0 +1,40 @@
+version: '3'
+
+name: jumbo-docker-dev
+
+networks:
+  jumbo_network:
+    name: jumbo_network
+    driver: bridge
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    hostname: postgres.docker
+    ports:
+      - 54320:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+      - ./db.sql:/docker-entrypoint-initdb.d/db.sql
+    environment:
+      - POSTGRES_USER=jumbo
+      - POSTGRES_PASSWORD=jumbo
+      - POSTGRES_DB=jumbo
+    networks:
+      - jumbo_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "jumbo"]
+      interval: 5s
+
+  app:
+    build:
+      context: .
+    env_file:
+      - .env.docker
+    ports:
+      - 9000:80
+    networks:
+      - jumbo_network
+    depends_on:
+      postgres:
+        condition: service_healthy

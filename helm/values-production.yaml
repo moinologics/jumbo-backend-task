@@ -1,0 +1,19 @@
+##### deployment values ######
+name: jumbo-task
+namespace: default
+port: 80
+envSecretName: doppler-prod-secrets
+
+##### container values ######
+image: moinologics/jumbo-task
+imagePullPolicy: Always
+replicaCount: 1
+memoryRequests: 256Mi
+memoryLimits: 512Mi
+cpuRequests: 250m
+cpuLimits: 500m
+
+##### Ingress values #######
+host: jumbo.altlink.tk
+tlsSecret: jumbo-tls-secret
+clusterIssuer: letsencrypt
